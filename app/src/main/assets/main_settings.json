@@ -1,0 +1,410 @@
+{
+  "login": {
+    "email_hint": "Email",
+    "password_hint": "Password",
+    "verify_hint": "Verify password",
+    "forgot_password": "Forgot password",
+    "login_button": "Login",
+    "sign_up": "Sign up",
+    "start": "Let's Cook!"
+  },
+  "pantry": {
+    "button_title": "Pantry",
+    "recipes_action_button": "See Recipes",
+    "pantry_action_button": "My Pantry",
+    "title_text": "Choose Your Ingredients!",
+    "products": [
+      {
+        "name": "Grains",
+        "icon": "",
+        "set": [
+          "Amaranth",
+          "Barley",
+          "Brown rice",
+          "Buckwheat",
+          "Bulgur",
+          "Corn",
+          "Einkorn",
+          "Farro/Emmer",
+          "Fonio",
+          "Freekeh",
+          "Grano",
+          "Kamut Khorasan Grain",
+          "Kañiwa",
+          "Millet",
+          "Oats",
+          "Quinoa",
+          "Rice",
+          "Rye",
+          "Sorghum/Milo",
+          "Spelt",
+          "Teﬀ",
+          "Triticale",
+          "Wheat",
+          "Wild Rice"
+        ]
+      },
+      {
+        "name": "Canned goods",
+        "icon": "",
+        "set": [
+          "Tuna",
+          "Mackerel",
+          "Sardines",
+          "Sausages",
+          "Beef",
+          "Ham",
+          "Turkey",
+          "Beans",
+          "Lentils",
+          "Chickpeas",
+          "Corn",
+          "Peas",
+          "Green beans",
+          "Carrots",
+          "Mushrooms",
+          "Potatoes",
+          "Tomatoes",
+          "Peaches",
+          "Pineapples",
+          "Pears",
+          "Cherries",
+          "Soups",
+          "Chili",
+          "Spaghetti-Os",
+          "Ravioli",
+          "Beans and rice",
+          "Condensed milk",
+          "Coconut milk",
+          "Pate and spreads",
+          "Gravy",
+          "Pudding",
+          "Bread"
+        ]
+      },
+      {
+        "name": "Oils & Fats",
+        "icon": "",
+        "set": [
+          "olive oil",
+          "canola oil",
+          "peanut oil",
+          "non-hydrogenated margarine",
+          "butter",
+          "hard margarine",
+          "lard",
+          "coconut oil",
+          "ghee",
+          "vegetable ghee",
+          "palm oil",
+          "avocado oil",
+          "pumpkin seed oil",
+          "walnut oil",
+          "grape seed oil",
+          "sesame oil",
+          "hemp seed oil",
+          "vegetable oil",
+          "canola oil",
+          "sunflower seed oil",
+          "bacon grease",
+          "schmaltz",
+          "duck fat"
+        ]
+      },
+      {
+        "name": "Spices & Herbs",
+        "icon": "",
+        "set": [
+          "allspice",
+          "angelica",
+          "anise",
+          "asafoetida",
+          "bay leaf",
+          "basil",
+          "bergamot",
+          "black cumin",
+          "black mustard",
+          "black pepper",
+          "borage",
+          "brown mustard",
+          "burnet",
+          "caraway",
+          "cardamom",
+          "cassia",
+          "catnip",
+          "cayenne pepper",
+          "celery seed",
+          "chervil",
+          "chicory",
+          "chili pepper",
+          "chives",
+          "cicely",
+          "cilantro",
+          "cinnamon",
+          "clove",
+          "coriander",
+          "costmary",
+          "cumin",
+          "curry",
+          "dill",
+          "fennel",
+          "fenugreek",
+          "filé",
+          "ginger",
+          "grains of paradise",
+          "holy basil",
+          "horehound",
+          "horseradish",
+          "hyssop",
+          "lavender",
+          "lemon balm",
+          "lemon grass",
+          "lemon verbena",
+          "licorice",
+          "lovage",
+          "mace",
+          "marjoram",
+          "nutmeg",
+          "oregano",
+          "paprika",
+          "parsley",
+          "peppermint",
+          "poppy seed",
+          "rosemary",
+          "rue",
+          "saffron",
+          "sage",
+          "savory",
+          "sesame",
+          "sorrel",
+          "star anise",
+          "spearmint",
+          "tarragon",
+          "thyme",
+          "turmeric",
+          "vanilla",
+          "wasabi",
+          "white mustard"
+        ]
+      },
+      {
+        "name": "Condiments & Sauces",
+        "icon": "",
+        "set": [
+          "Aioli",
+          "Almond Butter",
+          "Baba Ghanoush",
+          "Banana Ketchup",
+          "Balsamic Vinegar",
+          "Barbecue Sauce",
+          "Black Vinegar",
+          "Caesar Salad Dressing",
+          "Caramel",
+          "Chimichurri",
+          "Chocolate Sauce",
+          "Chutney",
+          "Cocktail Sauce",
+          "Dijon Mustard",
+          "Fish Sauce",
+          "French Dressing",
+          "Gochujang",
+          "Guacamole",
+          "Harissa",
+          "Hoisin",
+          "Honey",
+          "Honey Mustard",
+          "Horseradish",
+          "Hot Sauce",
+          "Hummus",
+          "Italian Dressing",
+          "Jelly",
+          "Ketchup",
+          "Malt Vinegar",
+          "Maple Syrup",
+          "Marinara Sauce",
+          "Mayonnaise",
+          "Olive Oil",
+          "Oyster Sauce",
+          "Paprika",
+          "Peanut Butter",
+          "Peanut Sauce",
+          "Pesto",
+          "Ranch Dressing",
+          "Relish",
+          "Salsa",
+          "Salt",
+          "Soy Sauce",
+          "Sriracha",
+          "Steak Sauce",
+          "Sweet and Sour Sauce",
+          "Tartar Sauce",
+          "Teriyaki Sauce",
+          "Thousand Island Dressing",
+          "Tomato Paste",
+          "Wasabi",
+          "Worcestershire Sauce",
+          "Yellow Mustard",
+          "Sweet Chili Sauce",
+          "Za’atar",
+          "Blue Cheese",
+          "Sour Cream",
+          "Whipped Cream"
+        ]
+      },
+      {
+        "name": "Dairy products & Eggs",
+        "icon": "",
+        "set": [
+          "Ayran",
+          "Milk",
+          "Butter",
+          "Ice Cream",
+          "Curd",
+          "Lassi (sweet Curd)",
+          "Buttermilk",
+          "Ghee",
+          "Milk Powder",
+          "Cream Cheese",
+          "Milkshakes",
+          "Yogurt",
+          "Fresh Cream",
+          "Goat Milk",
+          "Condensed Milk",
+          "Custard milk",
+          "Rasagulla",
+          "Cream",
+          "Whipped Cream",
+          "Sour Cream",
+          "Kulfi",
+          "Blue Cheese",
+          "Cheddar",
+          "Cottage cheese",
+          "Feta cheese",
+          "Gouda cheese",
+          "Emmental",
+          "Parmesan"
+        ]
+      },
+      {
+        "name": "Meat & Poultry",
+        "icon": "",
+        "set": [
+        ]
+      },
+      {
+        "name": "Seafood",
+        "icon": "",
+        "set": [
+        ]
+      },
+      {
+        "name": "Vegetables & Greens",
+        "icon": "",
+        "set": [
+        ]
+      },
+      {
+        "name": "Fruits & Berries",
+        "icon": "",
+        "set": [
+        ]
+      },
+      {
+        "name": "Nuts & Seeds",
+        "icon": "",
+        "set": [
+        ]
+      },
+      {
+        "name": "Diary-Free & Meat substitutes",
+        "icon": "",
+        "set": [
+        ]
+      },
+      {
+        "name": "Legumes",
+        "icon": "",
+        "set": [
+        ]
+      },
+      {
+        "name": "Sugar & Sweeteners",
+        "icon": "",
+        "set": [
+        ]
+      },
+      {
+        "name": "Seasonings",
+        "icon": "",
+        "set": [
+        ]
+      },
+      {
+        "name": "Baking",
+        "icon": "",
+        "set": [
+        ]
+      },
+      {
+        "name": "Pre-Made Doughs",
+        "icon": "",
+        "set": [
+        ]
+      },
+      {
+        "name": "Pasta",
+        "icon": "",
+        "set": [
+        ]
+      },
+      {
+        "name": "Bread & Salty Snacks",
+        "icon": "",
+        "set": [
+        ]
+      },
+      {
+        "name": "Dressings & Vinegar",
+        "icon": "",
+        "set": [
+        ]
+      },
+      {
+        "name": "Soups, Stews & Stocks",
+        "icon": "",
+        "set": [
+        ]
+      },
+      {
+        "name": "Desserts & Sweets",
+        "icon": "",
+        "set": [
+        ]
+      },
+      {
+        "name": "Alcohol Spirits",
+        "icon": "",
+        "set": [
+        ]
+      },
+      {
+        "name": "Beverages",
+        "icon": "",
+        "set": [
+        ]
+      }
+    ]
+  },
+  "menu": {
+    "button_title": "Menu",
+    "title": "Here what You can make with your %d ingredient(s)",
+    "title_second": "Only %d ingredient(s) missing"
+  },
+  "favorites": {
+    "button_title": "Favorites",
+    "title": "Only registered users can save recipes",
+    "title_second": "You have no saved recipes yet",
+    "action_button": "Sign up",
+    "action_button_second": "See Recipes"
+  }
+}
