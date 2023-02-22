@@ -12,11 +12,14 @@
     "button_title": "Pantry",
     "recipes_action_button": "See Recipes",
     "pantry_action_button": "My Pantry",
-    "title_text": "Choose Your Ingredients!",
+    "title_text_1": "Choose your ",
+    "title_text_2": "ingredients!",
+    "search_hint": "Search any ingredient",
+    "apply_button": "Apply",
     "products": [
       {
         "name": "Grains",
-        "icon": "",
+        "icon": "grains",
         "set": [
           "Amaranth",
           "Barley",
@@ -46,7 +49,7 @@
       },
       {
         "name": "Canned goods",
-        "icon": "",
+        "icon": "canned",
         "set": [
           "Tuna",
           "Mackerel",
@@ -84,7 +87,7 @@
       },
       {
         "name": "Oils & Fats",
-        "icon": "",
+        "icon": "oils",
         "set": [
           "olive oil",
           "canola oil",
@@ -113,7 +116,7 @@
       },
       {
         "name": "Spices & Herbs",
-        "icon": "",
+        "icon": "spices",
         "set": [
           "allspice",
           "angelica",
@@ -189,7 +192,7 @@
       },
       {
         "name": "Condiments & Sauces",
-        "icon": "",
+        "icon": "sauces",
         "set": [
           "Aioli",
           "Almond Butter",
@@ -253,7 +256,7 @@
       },
       {
         "name": "Dairy products & Eggs",
-        "icon": "",
+        "icon": "dairy",
         "set": [
           "Ayran",
           "Milk",
@@ -287,109 +290,103 @@
       },
       {
         "name": "Meat & Poultry",
-        "icon": "",
+        "icon": "meat",
         "set": [
         ]
       },
       {
         "name": "Seafood",
-        "icon": "",
+        "icon": "seafood",
         "set": [
         ]
       },
       {
         "name": "Vegetables & Greens",
-        "icon": "",
+        "icon": "vegetables",
         "set": [
         ]
       },
       {
         "name": "Fruits & Berries",
-        "icon": "",
+        "icon": "fruits",
         "set": [
         ]
       },
       {
         "name": "Nuts & Seeds",
-        "icon": "",
+        "icon": "nuts",
         "set": [
         ]
       },
       {
         "name": "Diary-Free & Meat substitutes",
-        "icon": "",
+        "icon": "substitutes",
         "set": [
         ]
       },
       {
         "name": "Legumes",
-        "icon": "",
+        "icon": "legumes",
         "set": [
         ]
       },
       {
         "name": "Sugar & Sweeteners",
-        "icon": "",
-        "set": [
-        ]
-      },
-      {
-        "name": "Seasonings",
-        "icon": "",
+        "icon": "sugar",
         "set": [
         ]
       },
       {
         "name": "Baking",
-        "icon": "",
+        "icon": "baking",
         "set": [
         ]
       },
       {
         "name": "Pre-Made Doughs",
-        "icon": "",
+        "icon": "doughs",
         "set": [
         ]
       },
       {
         "name": "Pasta",
-        "icon": "",
+        "icon": "pasta",
         "set": [
         ]
       },
       {
         "name": "Bread & Salty Snacks",
-        "icon": "",
+        "icon": "bread",
         "set": [
         ]
       },
       {
         "name": "Dressings & Vinegar",
-        "icon": "",
+        "icon": "dressings",
         "set": [
         ]
       },
       {
         "name": "Soups, Stews & Stocks",
-        "icon": "",
+        "icon": "soups",
         "set": [
         ]
       },
       {
         "name": "Desserts & Sweets",
-        "icon": "",
+        "icon": "sweets",
         "set": [
         ]
       },
       {
         "name": "Alcohol Spirits",
-        "icon": "",
+        "icon": "alcohol",
         "set": [
         ]
       },
       {
         "name": "Beverages",
-        "icon": "",
+        "icon": "beverages",
         "set": [
         ]
       }
@@ -406,5 +403,10 @@
     "title_second": "You have no saved recipes yet",
     "action_button": "Sign up",
     "action_button_second": "See Recipes"
+  },
+  "my_pantry": {
+    "title": "My Pantry",
+    "sub_title": "You have %d ingredient(s)",
+    "no_ingredients": "Add your ingredients to get started"
   }
 }

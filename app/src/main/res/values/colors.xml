@@ -4,11 +4,13 @@
     <color name="blue">#0F554E</color>
     <color name="purple_700">#3F51B5</color>
     <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="teal_new">#51D1C5</color>
+    <color name="teal_700">#8BC34A</color>
+    <color name="teal_new">#F3C728</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="pale">#F5F3F3</color>
+    <color name="pale">#E6E5E5</color>
+    <color name="extra_pale">#F1F1F1</color>
+    <color name="transparent">#00000000</color>
     <color name="font">#5C5B5B</color>
     <color name="disabled">#DBDBDB</color>
 </resources>

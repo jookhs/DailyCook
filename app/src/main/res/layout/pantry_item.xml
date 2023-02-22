@@ -1,29 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="12dp"
     android:gravity="center"
     android:layout_gravity="center"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/pantry_image"
-        android:layout_width="140dp"
-        android:layout_height="140dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_gravity="center"
         app:placeholderImage="@color/pale"
-        app:roundedCornerRadius="100dp"/>
+        app:roundedCornerRadius="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/pantry_image_blur"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:alpha="0.4"
+        app:placeholderImage="@color/font"
+        app:roundedCornerRadius="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/pantry_image_border"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        app:placeholderImage="@color/transparent"
+        app:roundingBorderWidth="3dp"
+        app:roundingBorderColor="@color/teal_new"
+        app:roundedCornerRadius="100dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <TextView
         android:id="@+id/pantry_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:maxLines="2"
+        android:fontFamily="sans-serif-thin"
+        android:textStyle="bold"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:ellipsize="none"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:scrollHorizontally="false"
         android:gravity="center"
-        android:textColor="@color/font"
-        android:textSize="16sp"/>
+        android:textColor="@color/white"
+        android:singleLine="false"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

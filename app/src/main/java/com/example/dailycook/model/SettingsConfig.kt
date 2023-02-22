@@ -6,7 +6,8 @@ data class SettingsConfig(
     @SerializedName("login") val loginConfig: LoginConfig,
     @SerializedName("pantry") val pantryConfig: PantryConfig,
     @SerializedName("menu") val menuConfig: MenuConfig,
-    @SerializedName("favorites") val favoritesConfig: FavoritesConfig
+    @SerializedName("favorites") val favoritesConfig: FavoritesConfig,
+    @SerializedName("my_pantry") val myPantry: MyPantry
 )
 
 data class LoginConfig(
@@ -21,7 +22,10 @@ data class LoginConfig(
 
 data class PantryConfig(
     @SerializedName("button_title") val title: String,
-    @SerializedName("title_text") val titleText: String,
+    @SerializedName("title_text_1") val titleText1: String,
+    @SerializedName("title_text_2") val titleText2: String,
+    @SerializedName("search_hint") val searchHint: String,
+    @SerializedName("apply_button") val applyBtn: String,
     @SerializedName("recipes_action_button") val recipesButton: String,
     @SerializedName("pantry_action_button") val pantryButton: String,
     @SerializedName("products") val products: List<Product>
@@ -45,4 +49,10 @@ data class FavoritesConfig(
     @SerializedName("title_second") val titleSecond: String,
     @SerializedName("action_button") val actionButton: String,
     @SerializedName("action_button_second") val actionButtonSecond: String
+)
+
+data class MyPantry(
+    @SerializedName("title") val title: String,
+    @SerializedName("sub_title") val subTitle: String,
+    @SerializedName("no_ingredients") val noItems: String
 )
