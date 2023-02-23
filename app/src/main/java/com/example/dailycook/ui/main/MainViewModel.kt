@@ -63,7 +63,7 @@ class MainViewModel(context: Context) : ViewModel() {
         val addedList = mutableListOf<String>()
         remote.toolConfig()?.pantryConfig?.products?.forEach {
             it.set.forEach { inngrdnt ->
-                if (myList.value?.contains(inngrdnt) == true) {
+                if (myList.value?.contains(inngrdnt) == true || ingredientsList.contains(inngrdnt)) {
                     if (!addedList.contains(it.name)) addedList.add(it.name)
                 }
             }

@@ -5,16 +5,17 @@ import android.content.res.Configuration
 import android.net.Uri
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.view.LayoutInflater
+
 import androidx.fragment.app.Fragment
 import android.view.View
+import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.dailycook.MainAdapterClickListener
 import com.example.dailycook.R
 import com.example.dailycook.databinding.FragmentMainBinding
-import com.example.dailycook.model.MyListItem
+
 import com.example.dailycook.model.PantryItem
 import com.facebook.common.util.UriUtil
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -75,11 +76,11 @@ class MainFragment : Fragment(R.layout.fragment_main), MainAdapterClickListener 
         binding?.search?.queryHint = viewModel.remote.toolConfig()?.pantryConfig?.searchHint
         binding?.pantryButton?.text = viewModel.remote.toolConfig()?.pantryConfig?.applyBtn
         binding?.myListBadge?.visibility = if (viewModel.myList.value?.isNotEmpty() == true) View.VISIBLE else View.GONE
+        viewModel.updateMyListState()
         binding?.btnBack?.setOnClickListener {
             viewModel.updatePantryListState()
             mainAdapter.notifyDataSetChanged()
             hidePreview()
-            hideMyList()
         }
 
         binding?.btnBackMyList?.setOnClickListener {
@@ -105,15 +106,20 @@ class MainFragment : Fragment(R.layout.fragment_main), MainAdapterClickListener 
             openMyList()
         }
 
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if (onBackPressed()) activity?.onBackPressed()
+            }
+        })
         val sheetBehavior = BottomSheetBehavior.from(binding?.contentLayout ?: view)
         sheetBehavior.isFitToContents = true
         sheetBehavior.isHideable = false
         sheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
-        view.viewTreeObserver.addOnGlobalLayoutListener {
-            if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-                sheetBehavior.state = BottomSheetBehavior.STATE_DRAGGING
-            }
-        }
+//        view.viewTreeObserver.addOnGlobalLayoutListener {
+//            if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+//                sheetBehavior.state = BottomSheetBehavior.STATE_DRAGGING
+//            }
+//        }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -231,6 +237,21 @@ class MainFragment : Fragment(R.layout.fragment_main), MainAdapterClickListener 
         }
     }
 
+    fun onBackPressed(): Boolean {
+        if (binding?.myListLayout?.visibility == View.VISIBLE) {
+            viewModel.updateMyListState()
+            mainAdapter.notifyDataSetChanged()
+            hideMyList()
+            return false
+        } else if (binding?.pantryPreview?.visibility == View.VISIBLE) {
+            viewModel.updatePantryListState()
+            mainAdapter.notifyDataSetChanged()
+            hidePreview()
+            return false
+        }
+        return true
+    }
+
     private fun openMyList() {
         val list = viewModel.getMyPantryItems()
         myListAdapter.setItems(list)
@@ -243,5 +264,4 @@ class MainFragment : Fragment(R.layout.fragment_main), MainAdapterClickListener 
         binding?.rcView?.visibility = View.GONE
         binding?.button?.visibility = View.GONE
     }
-
 }
