@@ -56,14 +56,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="14dp"
         android:background="@drawable/search"
         android:backgroundTint="@color/extra_pale"
         android:iconifiedByDefault="false"
+        android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/rc_view"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_iv" />
+        app:layout_constraintTop_toBottomOf="@+id/text_iv"
+        android:focusable="true" />
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -384,6 +385,8 @@
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="14dp"
             android:layout_marginTop="24dp"
+            android:clickable="true"
+            android:focusable="true"
             android:background="@drawable/search"
             android:backgroundTint="@color/extra_pale"
             android:iconifiedByDefault="false"
@@ -405,6 +408,22 @@
             app:layout_constraintTop_toBottomOf="@+id/my_list_search"
             app:layout_constraintBottom_toTopOf="@+id/my_list_button"/>
 
+        <ListView
+            android:id="@+id/my_search_list"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:background="@color/white"
+            android:visibility="gone"
+            android:dividerHeight="0dp"
+            android:divider="@null"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/my_list_search">
+        </ListView>
+
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/my_list_button"
             android:layout_width="match_parent"
@@ -424,6 +443,21 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+    <ListView
+        android:id="@+id/search_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:background="@color/white"
+        android:visibility="gone"
+        android:dividerHeight="0dp"
+        android:divider="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search">
+    </ListView>
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/button"

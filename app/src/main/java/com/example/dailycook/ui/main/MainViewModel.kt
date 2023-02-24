@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.dailycook.SettingsRemote
 import com.example.dailycook.model.MyListItem
 import com.example.dailycook.model.PantryItem
+import com.example.dailycook.model.SpinnerItem
 import com.facebook.common.util.UriUtil
 
 
@@ -19,11 +20,10 @@ class MainViewModel(context: Context) : ViewModel() {
     var currentPantryName: String? = null
     private val _myList = MutableLiveData<List<String>>()
     val myList: LiveData<List<String>> get() = _myList
-    var ingredientsList: MutableList<String> = mutableListOf()
+    var myIngredientsList: MutableList<String> = mutableListOf()
+    var spinnerItemsList = mutableListOf<SpinnerItem>()
     private val _previewPageFlow = MutableLiveData<List<String>>()
     var checkedChipsList: MutableList<String> = mutableListOf()
-    private val _myListPantryItems = MutableLiveData<List<MyListItem>>()
-    val myListPantryItems: LiveData<List<MyListItem>> get() = _myListPantryItems
 
     fun getListOfPantries(resources: Resources, context: Context?): List<PantryItem>? {
         if (pantryList.isNotEmpty()) return pantryList
@@ -43,7 +43,7 @@ class MainViewModel(context: Context) : ViewModel() {
         remote.toolConfig()?.pantryConfig?.products?.forEach {
             val set = mutableListOf<String>()
             it.set.forEach { inngrdnt ->
-                if (ingredientsList.contains(inngrdnt)) {
+                if (myIngredientsList.contains(inngrdnt)) {
                     set.add(inngrdnt)
                 }
             }
@@ -51,8 +51,26 @@ class MainViewModel(context: Context) : ViewModel() {
                 list.add(MyListItem(it.name, set))
             }
         }
-        _myListPantryItems.postValue(list)
         return list
+    }
+
+    fun getSpinnerItems(): MutableList<SpinnerItem> {
+        remote.toolConfig()?.pantryConfig?.products?.forEach {
+            it.set.forEach { item ->
+                if (spinnerItemsList.isNotEmpty()) {
+                    if (spinnerItemsList.find { it.text == item } == null) {
+                        spinnerItemsList.add(SpinnerItem(item, myIngredientsList.contains(item)))
+                    }
+                } else spinnerItemsList.add(SpinnerItem(item, myIngredientsList.contains(item)))
+            }
+        }
+        return spinnerItemsList
+    }
+
+    fun updateSpinnerItems() {
+        myIngredientsList.forEach { ingrd ->
+            spinnerItemsList.find { it.text == ingrd }?.added = true
+        }
     }
 
     fun updatePantryListState() {
@@ -63,7 +81,7 @@ class MainViewModel(context: Context) : ViewModel() {
         val addedList = mutableListOf<String>()
         remote.toolConfig()?.pantryConfig?.products?.forEach {
             it.set.forEach { inngrdnt ->
-                if (myList.value?.contains(inngrdnt) == true || ingredientsList.contains(inngrdnt)) {
+                if (myList.value?.contains(inngrdnt) == true || myIngredientsList.contains(inngrdnt)) {
                     if (!addedList.contains(it.name)) addedList.add(it.name)
                 }
             }
@@ -77,18 +95,18 @@ class MainViewModel(context: Context) : ViewModel() {
 
     fun addToMyList(items: List<String>) {
         items.forEach {
-            if (!ingredientsList.contains(it)) {
-                ingredientsList.add(it)
+            if (!myIngredientsList.contains(it)) {
+                myIngredientsList.add(it)
             }
         }
-        _myList.postValue(ingredientsList)
+        _myList.postValue(myIngredientsList)
     }
 
     fun deleteFromMyList(item: String) {
-        if (ingredientsList.contains(item)) {
-            ingredientsList.remove(item)
+        if (myIngredientsList.contains(item)) {
+            myIngredientsList.remove(item)
         }
-        _myList.postValue(ingredientsList)
+        _myList.postValue(myIngredientsList)
     }
 
     fun addChip(chip: String) {
