@@ -1,0 +1,23 @@
+<!--
+  ~ (c) 2021 Picsart, Inc.  All rights reserved.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+  android:width="18dp"
+  android:height="19dp"
+  android:autoMirrored="true"
+  android:viewportWidth="18"
+  android:viewportHeight="19">
+  <path
+    android:fillColor="#F84545"
+    android:fillType="evenOdd"
+    android:pathData="M7,14C7.2765,14 7.5,13.7765 7.5,13.5L7.5,7.5C7.5,7.2235 7.2765,7 7,7C6.7235,7 6.5,7.2235 6.5,7.5L6.5,13.5C6.5,13.7765 6.7235,14 7,14L7,14Z" />
+  <path
+    android:fillColor="#F84545"
+    android:fillType="evenOdd"
+    android:pathData="M17.5,2L15.518,2L10,2L10,1C10,0.4485 9.5515,0 9,0C8.4485,0 8,0.4485 8,1L8,2L2.482,2L0.5,2C0.224,2 0,2.224 0,2.5C0,2.776 0.224,3 0.5,3L2.5175,3L3,16.5C3,17.8785 4.1215,19 5.5,19L12.5,19C13.8785,19 15,17.8785 14.9995,16.518L15.4825,3L17.5,3C17.7765,3 18,2.776 18,2.5C18,2.224 17.7765,2 17.5,2L17.5,2ZM14,16.5C14,17.327 13.327,18 12.5,18L5.5,18C4.673,18 4,17.327 3.9995,16.482L3.518,3L14.482,3L14,16.5L14,16.5Z" />
+  <path
+    android:fillColor="#F84545"
+    android:fillType="evenOdd"
+    android:pathData="M9,14C9.2765,14 9.5,13.7765 9.5,13.5L9.5,7.5C9.5,7.2235 9.2765,7 9,7 8.7235,7 8.5,7.2235 8.5,7.5L8.5,13.5C8.5,13.7765 8.7235,14 9,14L9,14zM11,14C11.2765,14 11.5,13.7765 11.5,13.5L11.5,7.5C11.5,7.2235 11.2765,7 11,7 10.7235,7 10.5,7.2235 10.5,7.5L10.5,13.5C10.5,13.7765 10.7235,14 11,14L11,14z" />
+</vector>

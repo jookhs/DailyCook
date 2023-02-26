@@ -12,6 +12,7 @@ import com.example.dailycook.model.MyListItem
 import com.example.dailycook.model.PantryItem
 import com.example.dailycook.model.SpinnerItem
 import com.facebook.common.util.UriUtil
+import java.util.*
 
 
 class MainViewModel(context: Context) : ViewModel() {
@@ -58,10 +59,22 @@ class MainViewModel(context: Context) : ViewModel() {
         remote.toolConfig()?.pantryConfig?.products?.forEach {
             it.set.forEach { item ->
                 if (spinnerItemsList.isNotEmpty()) {
-                    if (spinnerItemsList.find { it.text == item } == null) {
-                        spinnerItemsList.add(SpinnerItem(item, myIngredientsList.contains(item)))
+                    if (spinnerItemsList.none { spinnerItemsList -> spinnerItemsList.text == item.replaceFirstChar { char ->
+                            if (char.isLowerCase()) char.titlecase(
+                                Locale.getDefault()
+                            ) else char.toString()
+                        } }) {
+                        spinnerItemsList.add(SpinnerItem(item.replaceFirstChar { char ->
+                            if (char.isLowerCase()) char.titlecase(
+                                Locale.getDefault()
+                            ) else char.toString()
+                        }, myIngredientsList.contains(item)))
                     }
-                } else spinnerItemsList.add(SpinnerItem(item, myIngredientsList.contains(item)))
+                } else spinnerItemsList.add(SpinnerItem(item.replaceFirstChar { char ->
+                    if (char.isLowerCase()) char.titlecase(
+                        Locale.getDefault()
+                    ) else char.toString()
+                }, myIngredientsList.contains(item)))
             }
         }
         return spinnerItemsList

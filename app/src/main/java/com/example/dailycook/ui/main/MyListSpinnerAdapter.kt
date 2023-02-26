@@ -11,7 +11,7 @@ import com.example.dailycook.databinding.SpinnerItemBinding
 import com.example.dailycook.model.SpinnerItem
 
 
-class SpinnerAdapter(private var items: MutableList<SpinnerItem>): BaseAdapter() {
+class MyListSpinnerAdapter(private var items: MutableList<SpinnerItem>): BaseAdapter() {
 
     private lateinit var binding: SpinnerItemBinding
     private var tempList = items.toMutableList()

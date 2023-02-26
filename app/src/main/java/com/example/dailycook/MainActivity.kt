@@ -4,8 +4,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.lifecycle.ViewModelProvider
 
 import com.example.dailycook.ui.main.MainFragment
+import com.example.dailycook.ui.main.MainViewModel
+import com.example.dailycook.ui.main.MainViewModelFactory
 import com.facebook.drawee.backends.pipeline.Fresco
 
 class MainActivity : AppCompatActivity() {
