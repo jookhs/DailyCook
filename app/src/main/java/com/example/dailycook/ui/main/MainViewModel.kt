@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.dailycook.SettingsRemote
+import com.example.dailycook.model.MenuItem
 import com.example.dailycook.model.MyListItem
 import com.example.dailycook.model.PantryItem
 import com.example.dailycook.model.SpinnerItem
@@ -23,6 +24,7 @@ class MainViewModel(context: Context) : ViewModel() {
     val myList: LiveData<List<String>> get() = _myList
     var myIngredientsList: MutableList<String> = mutableListOf()
     var spinnerItemsList = mutableListOf<SpinnerItem>()
+    var favoriteRecipesList = mutableListOf<MenuItem>()
     private val _previewPageFlow = MutableLiveData<List<String>>()
     var checkedChipsList: MutableList<String> = mutableListOf()
 
@@ -53,6 +55,14 @@ class MainViewModel(context: Context) : ViewModel() {
             }
         }
         return list
+    }
+
+    fun updateFavoritesList(favorite: MenuItem?) {
+        if (favoriteRecipesList.contains(favorite)) {
+            favoriteRecipesList.remove(favorite)
+        } else {
+            favorite?.let { favoriteRecipesList.add(it) }
+        }
     }
 
     fun getSpinnerItems(): MutableList<SpinnerItem> {

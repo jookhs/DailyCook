@@ -44,7 +44,7 @@ data class MenuConfig(
 )
 
 data class FavoritesConfig(
-    @SerializedName("button_title") val button: String,
+    @SerializedName("no_recipes") val noRecipesText: String,
     @SerializedName("title") val title: String,
     @SerializedName("title_second") val titleSecond: String,
     @SerializedName("action_button") val actionButton: String,

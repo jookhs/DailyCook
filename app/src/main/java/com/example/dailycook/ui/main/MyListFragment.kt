@@ -31,6 +31,12 @@ class MyListFragment: Fragment(R.layout.fragment_my_list), MainAdapterClickListe
         super.onViewCreated(view, savedInstanceState)
 
         binding = FragmentMyListBinding.bind(view)
+
+        if (savedInstanceState != null) {
+            viewModel.currentPantryName = savedInstanceState.getString("currentPantryName")
+            viewModel.myIngredientsList = savedInstanceState.getStringArrayList("ingredientsList")?.toMutableList() ?: emptyList<String>().toMutableList()
+            viewModel.addToMyList(viewModel.myIngredientsList)
+        }
         myListSpinnerAdapter =
             MyListSpinnerAdapter(viewModel.getSpinnerItems())
         myListAdapter = MyListAdapter(requireContext(), this)
@@ -58,6 +64,12 @@ class MyListFragment: Fragment(R.layout.fragment_my_list), MainAdapterClickListe
     override fun onDestroy() {
         super.onDestroy()
         binding = null
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString("currentPantryName", viewModel.currentPantryName)
+        outState.putStringArrayList("ingredientsList", viewModel.myIngredientsList as? ArrayList<String>)
     }
 
     private fun updateUI() {

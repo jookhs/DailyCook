@@ -398,9 +398,9 @@
     "title_second": "Only %d ingredient(s) missing"
   },
   "favorites": {
-    "button_title": "Favorites",
-    "title": "Only registered users can save recipes",
-    "title_second": "You have no saved recipes yet",
+    "title": "Saved Recipes",
+    "title_second": "Only registered users can save recipes",
+    "no_recipes": "You have %d recipe(s) saved",
     "action_button": "Sign up",
     "action_button_second": "See Recipes"
   },
