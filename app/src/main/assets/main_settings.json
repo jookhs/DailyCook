@@ -3,9 +3,10 @@
     "email_hint": "Email",
     "password_hint": "Password",
     "verify_hint": "Verify password",
-    "forgot_password": "Forgot password",
-    "login_button": "Login",
+    "forgot_password": "Forgot password?",
+    "login_button": "Sign in",
     "sign_up": "Sign up",
+    "sign_up_text": "Don't have an Account? ",
     "start": "Let's Cook!"
   },
   "pantry": {

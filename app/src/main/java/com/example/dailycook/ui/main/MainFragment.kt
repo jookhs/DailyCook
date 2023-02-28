@@ -96,6 +96,10 @@ class MainFragment : Fragment(R.layout.fragment_main), MainAdapterClickListener 
             openFavorites()
         }
 
+        binding?.profie?.setOnClickListener {
+            openLogin()
+        }
+
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 if (onBackPressed()) activity?.onBackPressed()
@@ -273,7 +277,7 @@ class MainFragment : Fragment(R.layout.fragment_main), MainAdapterClickListener 
     }
 
     fun onBackPressed(): Boolean {
-            if (binding?.pantryPreview?.visibility == View.VISIBLE) {
+        if (binding?.pantryPreview?.visibility == View.VISIBLE) {
             viewModel.updatePantryListState()
             mainAdapter.notifyDataSetChanged()
             hidePreview()
@@ -303,6 +307,14 @@ class MainFragment : Fragment(R.layout.fragment_main), MainAdapterClickListener 
         parentFragmentManager
             .beginTransaction()
             .replace(R.id.container, FavoritesFragment.newInstance())
+            .commitNow()
+        hide()
+    }
+
+    private fun openLogin() {
+        parentFragmentManager
+            .beginTransaction()
+            .replace(R.id.container, LoginFragment.newInstance())
             .commitNow()
         hide()
     }

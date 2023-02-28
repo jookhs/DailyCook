@@ -16,6 +16,7 @@ data class LoginConfig(
     @SerializedName("verify_hint") val verifyPass: String,
     @SerializedName("forgot_password") val forgotPass: String,
     @SerializedName("login_button") val login: String,
+    @SerializedName("sign_up_text") val signUpText: String,
     @SerializedName("sign_up") val signUp: String,
     @SerializedName("start") val start: String
 )
