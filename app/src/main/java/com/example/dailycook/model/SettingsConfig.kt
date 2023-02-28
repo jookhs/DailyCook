@@ -48,6 +48,7 @@ data class FavoritesConfig(
     @SerializedName("no_recipes") val noRecipesText: String,
     @SerializedName("title") val title: String,
     @SerializedName("title_second") val titleSecond: String,
+    @SerializedName("title_third") val titleThird: String,
     @SerializedName("action_button") val actionButton: String,
     @SerializedName("action_button_second") val actionButtonSecond: String
 )

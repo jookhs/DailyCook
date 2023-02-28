@@ -141,6 +141,8 @@ class MainViewModel(context: Context) : ViewModel() {
         checkedChipsList.remove(chip)
         _previewPageFlow.postValue(checkedChipsList)
     }
+    // need to be changed
+    fun isSignedIn() = false
 
 }
 

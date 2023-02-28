@@ -67,11 +67,11 @@ class FavoritesFragment: Fragment(R.layout.fragment_favorites), MainAdapterClick
     }
 
     private fun updateUI() {
-        binding?.notRegistered?.visibility = if (favoritesAdapter.itemCount == 0) View.VISIBLE else View.GONE
-        binding?.signUp?.visibility = if (favoritesAdapter.itemCount == 0) View.VISIBLE else View.GONE
+        binding?.notRegistered?.visibility = if (favoritesAdapter.itemCount == 0 && !viewModel.isSignedIn()) View.VISIBLE else View.GONE
+        binding?.signUp?.visibility = if (favoritesAdapter.itemCount == 0 && !viewModel.isSignedIn()) View.VISIBLE else View.GONE
         binding?.signUp?.text = viewModel.remote.toolConfig()?.favoritesConfig?.actionButton
         binding?.favoritesTitle?.text = viewModel.remote.toolConfig()?.favoritesConfig?.title
-        binding?.notRegisteredText?.text = viewModel.remote.toolConfig()?.favoritesConfig?.titleSecond
+        binding?.notRegisteredText?.text = if (!viewModel.isSignedIn()) viewModel.remote.toolConfig()?.favoritesConfig?.titleSecond else viewModel.remote.toolConfig()?.favoritesConfig?.titleThird
         // if registered need to show no recipes saved
         binding?.favoritesSubTitle?.text = String.format(viewModel.remote.toolConfig()?.favoritesConfig?.noRecipesText ?: "", viewModel.favoriteRecipesList.size)
     }

@@ -401,6 +401,7 @@
   "favorites": {
     "title": "Saved Recipes",
     "title_second": "Only registered users can save recipes",
+    "title_third": "Add your saved recipes here",
     "no_recipes": "You have %d recipe(s) saved",
     "action_button": "Sign up",
     "action_button_second": "See Recipes"
