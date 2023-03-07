@@ -66,7 +66,11 @@ class LoginFragment: Fragment(R.layout.fragment_login) {
         } else {
             parentFragmentManager
                 .beginTransaction()
-                .replace(R.id.container, MainFragment.newInstance())
+                .replace(R.id.container, when (viewModel.loginOpenedFrom) {
+                    FAVORITES -> FavoritesFragment.newInstance()
+                    MENU -> MenuFragment.newInstance()
+                    else -> MainFragment.newInstance()
+                })
                 .commitNow()
             hide()
         }

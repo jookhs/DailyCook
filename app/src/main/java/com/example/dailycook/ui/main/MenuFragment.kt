@@ -1,55 +1,56 @@
 package com.example.dailycook.ui.main
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.View
-import android.widget.SearchView
-import android.widget.Toast
+import android.view.ViewGroup.LayoutParams
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView.LayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.dailycook.MainAdapterClickListener
 import com.example.dailycook.R
-import com.example.dailycook.databinding.FragmentFavoritesBinding
-import com.example.dailycook.databinding.FragmentMyListBinding
+import com.example.dailycook.databinding.FragmentMenuBinding
 import com.example.dailycook.model.MenuItem
-import com.example.dailycook.model.SpinnerItem
 import java.util.*
 
-class FavoritesFragment: Fragment(R.layout.fragment_favorites), MainAdapterClickListener {
+class MenuFragment: Fragment(R.layout.fragment_menu), MainAdapterClickListener {
     companion object {
-        fun newInstance() = FavoritesFragment()
+        fun newInstance() = MenuFragment()
     }
 
     private val viewModel: MainViewModel by activityViewModels {
         MainViewModelFactory(requireContext())
     }
-    private lateinit var favoritesAdapter: FavoritesAdapter
-    private var binding: FragmentFavoritesBinding? = null
+    private lateinit var menuAdapter: MenuAdapter
+    private var binding: FragmentMenuBinding? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding = FragmentFavoritesBinding.bind(view)
+        binding = FragmentMenuBinding.bind(view)
 
         if (savedInstanceState != null) {
             viewModel.currentPantryName = savedInstanceState.getString("currentPantryName")
             viewModel.myIngredientsList = savedInstanceState.getStringArrayList("ingredientsList")?.toMutableList() ?: emptyList<String>().toMutableList()
             viewModel.addToMyList(viewModel.myIngredientsList)
         }
-        favoritesAdapter = FavoritesAdapter(viewModel.favoriteRecipesList, this)
-        binding?.favoritesRcView?.apply {
-            layoutManager = GridLayoutManager(context, 1)
-            adapter = favoritesAdapter
+        val layoutManager = StaggeredGridLayoutManager(if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) 4 else 2, LinearLayoutManager.VERTICAL)
+        menuAdapter = MenuAdapter(viewModel.favoriteRecipesList, this)
+        binding?.menuRcView?.apply {
+            this.layoutManager = layoutManager
+            adapter = menuAdapter
         }
-        binding?.btnBackFavorite?.setOnClickListener {
+        binding?.btnBackMenu?.setOnClickListener {
             onBackPressed()
         }
-        binding?.profieFavorites?.setOnClickListener {
+        binding?.profieMenu?.setOnClickListener {
             openLogin()
         }
-        favoritesAdapter.setItems(viewModel.favoriteRecipesList)
+        menuAdapter.setItems(viewModel.favoriteRecipesList)
         updateUI()
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
@@ -70,19 +71,14 @@ class FavoritesFragment: Fragment(R.layout.fragment_favorites), MainAdapterClick
     }
 
     private fun updateUI() {
-        binding?.notRegistered?.visibility = if (favoritesAdapter.itemCount == 0 && !viewModel.isSignedIn()) View.VISIBLE else View.GONE
-        binding?.signUp?.visibility = if (favoritesAdapter.itemCount == 0 && !viewModel.isSignedIn()) View.VISIBLE else View.GONE
-        binding?.signUp?.text = viewModel.remote.toolConfig()?.favoritesConfig?.actionButton
-        binding?.favoritesTitle?.text = viewModel.remote.toolConfig()?.favoritesConfig?.title
-        binding?.notRegisteredText?.text = if (!viewModel.isSignedIn()) viewModel.remote.toolConfig()?.favoritesConfig?.titleSecond else viewModel.remote.toolConfig()?.favoritesConfig?.titleThird
-        // if registered need to show no recipes saved
-        binding?.favoritesSubTitle?.text = String.format(viewModel.remote.toolConfig()?.favoritesConfig?.noRecipesText ?: "", viewModel.favoriteRecipesList.size)
+        binding?.menuTitle?.text = viewModel.remote.toolConfig()?.menuConfig?.title
+        binding?.menuSubTitle?.text = String.format(viewModel.remote.toolConfig()?.menuConfig?.titleSecond ?: "", viewModel.myIngredientsList.size)
     }
 
     override fun onHeartClicked(item: MenuItem?) {
         viewModel.updateFavoritesList(item)
-        favoritesAdapter.setItems(viewModel.favoriteRecipesList)
-        favoritesAdapter.notifyDataSetChanged()
+        menuAdapter.setItems(viewModel.favoriteRecipesList)
+        menuAdapter.notifyDataSetChanged()
         updateUI()
     }
 
@@ -111,7 +107,7 @@ class FavoritesFragment: Fragment(R.layout.fragment_favorites), MainAdapterClick
     }
 
     private fun openLogin() {
-        viewModel.loginOpenedFrom = FAVORITES
+        viewModel.loginOpenedFrom = MENU
         parentFragmentManager
             .beginTransaction()
             .replace(R.id.container, LoginFragment.newInstance())
@@ -120,7 +116,7 @@ class FavoritesFragment: Fragment(R.layout.fragment_favorites), MainAdapterClick
     }
 
     private fun openRecipe() {
-        viewModel.recipeOpenedFrom = FAVORITES
+        viewModel.recipeOpenedFrom = MENU
         parentFragmentManager
             .beginTransaction()
             .replace(R.id.container, RecipeFragment.newInstance())

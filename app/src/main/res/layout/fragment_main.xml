@@ -142,27 +142,11 @@
             android:layout_height="20dp"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="12dp"
-            android:layout_marginBottom="12dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginBottom="10dp"
             android:elevation="17dp"
             android:visibility="gone"
             android:src="@drawable/ic_dot"/>
-
-<!--        <TextView-->
-<!--            android:id="@+id/text_count"-->
-<!--            style="@style/Widget.Design.FloatingActionButton"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:elevation="7dp"-->
-<!--            android:gravity="center"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:layout_alignParentRight="true"-->
-<!--            android:layout_alignParentTop="true"-->
-<!--            android:layout_marginBottom="24dp"-->
-<!--            android:layout_marginEnd="4dp"-->
-<!--            android:layout_marginTop="2dp"-->
-<!--            android:textSize="12sp"-->
-<!--            tools:text="10" />-->
     </RelativeLayout>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout

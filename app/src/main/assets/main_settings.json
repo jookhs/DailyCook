@@ -395,8 +395,9 @@
   },
   "menu": {
     "button_title": "Menu",
-    "title": "Here what You can make with your %d ingredient(s)",
-    "title_second": "Only %d ingredient(s) missing"
+    "title": "Here what you can make with your",
+    "title_second": "%d ingredient(s)",
+    "ingredients": "Only %d ingredient(s) missing"
   },
   "favorites": {
     "title": "Saved Recipes",

@@ -100,6 +100,10 @@ class MainFragment : Fragment(R.layout.fragment_main), MainAdapterClickListener 
             openLogin()
         }
 
+        binding?.button?.setOnClickListener {
+            openRecipes()
+        }
+
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 if (onBackPressed()) activity?.onBackPressed()
@@ -111,9 +115,25 @@ class MainFragment : Fragment(R.layout.fragment_main), MainAdapterClickListener 
         sheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
         // delete later
         viewModel.favoriteRecipesList.clear()
+        viewModel.recipesList.clear()
         viewModel.pantryList.forEach {
-            viewModel.favoriteRecipesList.add(MenuItem(it.image, it.title, false))
+            val type =
+                if (viewModel.pantryList.indexOf(it) % 4 == 0 || viewModel.pantryList.indexOf(it) % 4 == 3) MenuAdapter.VIEW_TYPE_ONE else MenuAdapter.VIEW_TYPE_TWO
+            viewModel.favoriteRecipesList.add(
+                MenuItem(
+                    it.image,
+                    it.title,
+                    false,
+                    type,
+                    null, null, null
+                )
+            )
+            val ingrd = listOf("bread", "butter", "apples")
+            val desc = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam dapibus rhoncus justo sit amet finibus. Phasellus sit amet purus sem. Curabitur varius augue eget purus rhoncus, non cursus erat efficitur. Mauris venenatis sodales lorem, quis molestie augue malesuada venenatis. Nam sit amet arcu luctus, gravida enim vitae, porta ante. Vestibulum suscipit ipsum ac erat scelerisque euismod in in neque. Fusce porta sollicitudin dolor, a sagittis risus. Nam facilisis at velit nec rutrum. Vivamus mattis tempor auctor. Ut ac venenatis ipsum. Donec posuere quis mauris vitae ultrices. Proin mauris justo, consequat ac augue a, commodo blandit ex. Pellentesque a elit et leo congue sodales. Praesent ut mauris pellentesque, imperdiet sapien vel, aliquam velit. Curabitur non lorem neque.\n" +
+                    "\n"
+            viewModel.recipesList.add(MenuItem(it.image, it.title, viewModel.favoriteRecipesList.find { favorite -> favorite.title == it.title } != null, 0, ingrd, desc, 35))
         }
+
     }
 
     override fun onStart() {
@@ -199,6 +219,7 @@ class MainFragment : Fragment(R.layout.fragment_main), MainAdapterClickListener 
 
     private fun updateMainButtonState() {
         binding?.button?.isEnabled = viewModel.myIngredientsList.isNotEmpty()
+        binding?.button?.text =if (viewModel.recipesList.size != 0) viewModel.remote.toolConfig()?.pantryConfig?.recipesButton + " (" + viewModel.recipesList.size + ")" else viewModel.remote.toolConfig()?.pantryConfig?.recipesButton
         binding?.button?.setBackgroundColor(if (binding?.button?.isEnabled == true) resources.getColor(R.color.teal_new) else resources.getColor(R.color.disabled))
     }
 
@@ -312,9 +333,18 @@ class MainFragment : Fragment(R.layout.fragment_main), MainAdapterClickListener 
     }
 
     private fun openLogin() {
+        viewModel.loginOpenedFrom = MAIN
         parentFragmentManager
             .beginTransaction()
             .replace(R.id.container, LoginFragment.newInstance())
+            .commitNow()
+        hide()
+    }
+
+    private fun openRecipes() {
+        parentFragmentManager
+            .beginTransaction()
+            .replace(R.id.container, MenuFragment.newInstance())
             .commitNow()
         hide()
     }

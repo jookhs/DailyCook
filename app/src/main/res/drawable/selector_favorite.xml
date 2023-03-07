@@ -4,7 +4,7 @@
   <item>
     <selector>
       <item
-        android:drawable="@drawable/ic_heart"
+        android:drawable="@drawable/ic_heart_white"
         android:state_selected="false"/>
       <item
         android:drawable="@drawable/ic_heart_filled"

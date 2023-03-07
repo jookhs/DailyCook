@@ -15,11 +15,16 @@ import com.example.dailycook.model.SpinnerItem
 import com.facebook.common.util.UriUtil
 import java.util.*
 
+const val MAIN = "main"
+const val FAVORITES = "favorites"
+const val MENU = "menu"
+
 
 class MainViewModel(context: Context) : ViewModel() {
     val remote: SettingsRemote = SettingsRemote(context)
     val pantryList: MutableList<PantryItem> = mutableListOf()
     var currentPantryName: String? = null
+    var currentRecipeName: String? = null
     private val _myList = MutableLiveData<List<String>>()
     val myList: LiveData<List<String>> get() = _myList
     var myIngredientsList: MutableList<String> = mutableListOf()
@@ -27,6 +32,9 @@ class MainViewModel(context: Context) : ViewModel() {
     var favoriteRecipesList = mutableListOf<MenuItem>()
     private val _previewPageFlow = MutableLiveData<List<String>>()
     var checkedChipsList: MutableList<String> = mutableListOf()
+    var recipesList: MutableList<MenuItem> = mutableListOf()
+    var loginOpenedFrom: String = MAIN
+    var recipeOpenedFrom: String = MENU
 
     fun getListOfPantries(resources: Resources, context: Context?): List<PantryItem>? {
         if (pantryList.isNotEmpty()) return pantryList
@@ -94,6 +102,10 @@ class MainViewModel(context: Context) : ViewModel() {
         myIngredientsList.forEach { ingrd ->
             spinnerItemsList.find { it.text == ingrd }?.added = true
         }
+    }
+
+    fun getCurrentRecipe(): MenuItem? {
+        return recipesList.find { it.title == currentRecipeName }
     }
 
     fun updatePantryListState() {

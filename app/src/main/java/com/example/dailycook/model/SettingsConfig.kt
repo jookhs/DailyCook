@@ -42,6 +42,7 @@ data class MenuConfig(
     @SerializedName("button_title") val button: String,
     @SerializedName("title") val title: String,
     @SerializedName("title_second") val titleSecond: String,
+    @SerializedName("ingredients") val ingredients: String,
 )
 
 data class FavoritesConfig(
